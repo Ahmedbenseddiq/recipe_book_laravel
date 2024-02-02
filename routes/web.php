@@ -24,3 +24,11 @@ Route::get('/recipe', [recipeController::class, 'index'])->name('recipe.index');
 Route::get('/recipe/create', [recipeController::class, 'create'])->name('recipe.create');
 
 Route::post('/recipe', [recipeController::class, 'store'])->name('recipe.store');
+
+Route::get('/recipe/{recipe}/edit', [recipeController::class, 'edit'])->name('recipe.edit');
+
+Route::post('/recipe/update/{recipe}', [recipeController::class, 'update'])->name('recipe.update');
+
+Route::delete('/recipe/destroy/{recipe}', [recipeController::class, 'destroy'])->name('recipe.destroy');
+
+Route::get('/recipes/search', [RecipeController::class, 'search'])->name('search');

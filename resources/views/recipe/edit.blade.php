@@ -3,7 +3,7 @@
 
     <head>
         <meta charset="utf-8">
-        <title>Add Recipe</title>
+        <title>Fruitables - Vegetable Website Template</title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <meta content="" name="keywords">
         <meta content="" name="description">
@@ -17,10 +17,7 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
-        <!-- Libraries Stylesheet -->
-        <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
-        <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-
+    
 
         <!-- Customized Bootstrap Stylesheet -->
         <link href="{{URL::asset('css/bootstrap.min.css')}}" rel="stylesheet">
@@ -63,27 +60,39 @@
         <!-- Single Product Start -->
         <div class="container-fluid py-5 mt-5">
             <div class="container py-5">
-                <form action="{{ route('recipe.store') }}" method="POST" enctype="multipart/form-data">
-                @csrf
-                @method('post')
+                <div>
+                    @if ($errors->any())
+                        <ul>
+                            @foreach ($errors->all as $error )
+                                <li>{($error)}</li>
+                            @endforeach
+                        </ul>
+                    @endif
+                </div>
+
+                <form action="{{route('recipe.update', $recipe->id)}}" method="post">
+                    @csrf
+
                     <label for="recipe_name" class="visually-hidden">Recipe Name</label>
-                    <input type="text"  name="recipe_name" class="form-control mb-5" placeholder="Recipe Name" >
+                    <input type="text" id="recipe_name"  name ="recipe_name" class="form-control mb-5" placeholder="Recipe Name" value="{{$recipe->recipe_name}}">
                 
                     <label for="recipe_description" class="visually-hidden">Description</label>
-                    <textarea id="recipe_description" name="description" class="form-control mb-5" placeholder="Description"></textarea>
+                    <input id="recipe_description" name="description" class="form-control mb-5" placeholder="Description" value="{{$recipe->description}}"></textarea>
                 
                     <label for="recipe_ingredients" class="visually-hidden">Ingredients</label>
-                    <textarea id="recipe_ingredients" name="ingredients" class="form-control mb-5" placeholder="Ingredients"></textarea>
+                    <input id="recipe_ingredients" name="ingredients" class="form-control mb-5" placeholder="Ingredients" value="{{$recipe->ingredients}}"></input>
                 
-                    <!-- Input for adding an image -->
-                    <label for="recipe_image" class="visually-hidden">Recipe Image</label>
-                    <input type="file" id="recipe_image" name="image" accept="image/*" class="form-control mb-5">
+                    <!-- <label for="recipe_image" class="visually-hidden">Recipe Image</label>
+                    <!-- <input type="file" id="recipe_image" name="image" accept="image/*" class="form-control mb-5">  -->
                 
-                    <button type="submit" class="btn btn-success">Add Recipe</button>
+                    <button type="update" class="btn btn-success">Update Recipe</button>
                 </form>
                 
             </div>
         </div>        
+
+              
+        
 
     </body>
 

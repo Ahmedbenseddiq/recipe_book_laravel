@@ -3,7 +3,7 @@
 
     <head>
         <meta charset="utf-8">
-        <title>Add Recipe</title>
+        <title>Fruitables - Vegetable Website Template</title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <meta content="" name="keywords">
         <meta content="" name="description">
@@ -23,10 +23,10 @@
 
 
         <!-- Customized Bootstrap Stylesheet -->
-        <link href="{{URL::asset('css/bootstrap.min.css')}}" rel="stylesheet">
+        <link href="css/bootstrap.min.css" rel="stylesheet">
 
         <!-- Template Stylesheet -->
-        <link href="{{URL::asset('css/style.css')}}" rel="stylesheet">
+        <link href="css/style.css" rel="stylesheet">
     </head>
 
     <body>
@@ -52,7 +52,7 @@
                                 <i class="fa fa-shopping-bag fa-2x"></i>
                                 <span class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1" style="top: -5px; left: 15px; height: 20px; min-width: 20px;">3</span>
                             </a> -->
-                            <a href="{{route('recipe.index')}}" class="nav-item nav-link">Back Home</a>
+                            <a href="index.html" class="nav-item nav-link">Back Home</a>
                         </div>
                     </div>
                 </nav>
@@ -63,27 +63,31 @@
         <!-- Single Product Start -->
         <div class="container-fluid py-5 mt-5">
             <div class="container py-5">
-                <form action="{{ route('recipe.store') }}" method="POST" enctype="multipart/form-data">
-                @csrf
-                @method('post')
-                    <label for="recipe_name" class="visually-hidden">Recipe Name</label>
-                    <input type="text"  name="recipe_name" class="form-control mb-5" placeholder="Recipe Name" >
-                
-                    <label for="recipe_description" class="visually-hidden">Description</label>
-                    <textarea id="recipe_description" name="description" class="form-control mb-5" placeholder="Description"></textarea>
-                
-                    <label for="recipe_ingredients" class="visually-hidden">Ingredients</label>
-                    <textarea id="recipe_ingredients" name="ingredients" class="form-control mb-5" placeholder="Ingredients"></textarea>
-                
-                    <!-- Input for adding an image -->
-                    <label for="recipe_image" class="visually-hidden">Recipe Image</label>
-                    <input type="file" id="recipe_image" name="image" accept="image/*" class="form-control mb-5">
-                
-                    <button type="submit" class="btn btn-success">Add Recipe</button>
-                </form>
-                
+                <div class="row g-4 mb-5">
+                    <div class="col-lg-8 col-xl-9">
+                        <div class="row g-4">
+                            <div class="col-lg-6">
+                                <div class="border rounded">
+                                    <a href="#">
+                                        <img src="img/single-item.jpg" class="img-fluid rounded" alt="Image">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <h4 class="fw-bold mb-3">Brocoli</h4>
+                                <p class="mb-3">Category: Vegetables</p>
+                                <p class="mb-4">The generated Lorem Ipsum is therefore always free from repetition injected humour, or non-characteristic words etc.</p>
+                                <hr>
+                                <p class="mb-4">Susp endisse ultricies nisi vel quam suscipit. Sabertooth peacock flounder; chain pickerel hatchetfish, pencilfish snailfish</p>                               
+                            </div>                   
+                        </div>
+                    </div>   
+                </div>
             </div>
         </div>        
+
+              
+        
 
     </body>
 
