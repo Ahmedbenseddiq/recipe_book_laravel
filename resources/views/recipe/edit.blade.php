@@ -70,7 +70,7 @@
                     @endif
                 </div>
 
-                <form action="{{route('recipe.update', $recipe->id)}}" method="post">
+                <form action="{{route('recipe.update', $recipe->id)}}" method="post" enctype="multipart/form-data">
                     @csrf
 
                     <label for="recipe_name" class="visually-hidden">Recipe Name</label>
@@ -82,8 +82,8 @@
                     <label for="recipe_ingredients" class="visually-hidden">Ingredients</label>
                     <input id="recipe_ingredients" name="ingredients" class="form-control mb-5" placeholder="Ingredients" value="{{$recipe->ingredients}}"></input>
                 
-                    <!-- <label for="recipe_image" class="visually-hidden">Recipe Image</label>
-                    <!-- <input type="file" id="recipe_image" name="image" accept="image/*" class="form-control mb-5">  -->
+                   <label for="recipe_image" class="visually-hidden">Recipe Image</label>
+                   <input type="file"  name="image" accept="image/*" class="form-control mb-5">  
                 
                     <button type="update" class="btn btn-success">Update Recipe</button>
                 </form>
@@ -91,7 +91,7 @@
             </div>
         </div>        
 
-              
+                
         
 
     </body>

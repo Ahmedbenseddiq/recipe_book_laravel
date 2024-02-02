@@ -13,6 +13,18 @@ class RecipeController extends Controller
         return view('recipe.index', ['recipes' => $recipes]);
     }
 
+    public function singleRecipe($id){
+        $recipe = Recipe::find($id);
+    
+        if (!$recipe) {
+            // Handle the case when the recipe is not found
+            return redirect()->route('recipe.index')->with('error', 'Recipe not found');
+        }
+    
+        return view('recipe.singleRecipe', ['recipe' => $recipe]);
+    }
+    
+
     public function create(){
         return view('recipe.create');
     }
@@ -22,12 +34,12 @@ class RecipeController extends Controller
             'recipe_name' => 'required',
             'description' => 'required',
             'ingredients' => 'required',
-            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Adjust the allowed file types and size
+            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048', 
         ]);
 
         if ($request->hasFile('image')) {
             $imagePath = $request->file('image')->store('recipe_images', 'public');
-            $data['image'] = $imagePath;  // Store the relative file path, not the absolute URL
+            $data['image'] = $imagePath; 
         }
 
         $newRecipe = Recipe::create($data);
@@ -44,17 +56,16 @@ class RecipeController extends Controller
             'recipe_name' => 'required',
             'description' => 'required',
             'ingredients' => 'required',
-            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Adjust the allowed file types and size
+            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048', 
         ]);
 
         if ($request->hasFile('image')) {
-            // Delete the old image if it exists
             if ($recipe->image) {
                 Storage::disk('public')->delete($recipe->image);
             }
 
             $imagePath = $request->file('image')->store('recipe_images', 'public');
-            $data['image'] = $imagePath;  // Store the relative file path, not the absolute URL
+            $data['image'] = $imagePath; 
         }
 
         $recipe->update($data);

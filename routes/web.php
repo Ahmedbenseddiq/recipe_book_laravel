@@ -31,4 +31,6 @@ Route::post('/recipe/update/{recipe}', [recipeController::class, 'update'])->nam
 
 Route::delete('/recipe/destroy/{recipe}', [recipeController::class, 'destroy'])->name('recipe.destroy');
 
+Route::get('/recipe/singleRecipe/{recipe}', [recipeController::class, 'singleRecipe'])->name('recipe.singleRecipe');
+
 Route::get('/recipes/search', [RecipeController::class, 'search'])->name('search');

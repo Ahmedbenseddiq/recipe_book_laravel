@@ -136,7 +136,7 @@
                                     @foreach ($recipes as $recipe)
                                         <div class="col-md-6 col-lg-4 col-xl-3">
                                             <div class="rounded position-relative">
-                                                <a href="" class="text-decoration-none">
+                                                <a href="{{ route('recipe.singleRecipe', ['recipe' => $recipe]) }}" class="text-decoration-none">
                                                     <div class="fruite-img">
                                                         <img src="{{ asset('storage/' . $recipe->image) }}" class="img-fluid w-100 rounded-top" alt="Recipe Image">
                                                     </div>
